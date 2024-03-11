@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
         list = n;
     }
 
-    node* sorted = list;
+    node* dummy = list;
     //Pointer to where the lowest value in the list is
     node* low_index;
 
@@ -41,7 +41,6 @@ int main(int argc, char* argv[]){
                 low_index = j->next;
             }
         }
-
         //Finds where the lowest value initially was
         //and replaces it with the first value in the list
         for (node* j = i; j != NULL; j = j->next){
@@ -50,10 +49,16 @@ int main(int argc, char* argv[]){
             }
         }
 
-        sorted->number = low;
-        printf("%i\n", sorted->number);
-        sorted = sorted->next;
+        dummy->number = low;
+        dummy = dummy->next;
     }
+
+    node* ptr = list;
+    while (ptr != NULL){
+        printf("%i\n", ptr->number);
+        ptr = ptr->next;
+    }
+
     return 0;
 }
 
